@@ -1,0 +1,11 @@
+# Regular Expressions (use [ ] instead of drawing a box)
+.  Bac[k\s]lash              
+.  aaaaa|ccccc [empty]
+1. a1a3[b2]b2c3a1
+2. I␣love␣Teddy␣Bears! [null]
+3. ab[c+++..].+++...+++def
+4. xyzabc|abxyz [empty]
+5. No match
+6. No match
+7. baa␣baa:␣a[␣bla]ck␣sheep
+8. Ultima-Thule [null]

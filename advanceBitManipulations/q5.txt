@@ -1,0 +1,14 @@
+# SQL Part (a)
+SELECT MurderId FROM Murder WHERE RoomId=3;
+
+# SQL Part (b)
+SELECT WeaponId, COUNT(MurderId) FROM Murder GROUP BY WeaponId;
+
+# SQL Part (c)
+SELECT SuspectId, Weapon.Name FROM Murder CROSS JOIN Weapon ON Weapon.WeaponId = Murder.WeaponId ORDER BY Murder.SuspectId;
+
+# SQL Part (d)
+SELECT Suspect.name, Room.name FROM Suspect LEFT JOIN Murder on Suspect.SuspectId = Murder.SuspectId LEFT JOIN Room on Room.RoomId = Murder.RoomId;
+
+# SQL Part (e) [bonus]
+SELECT Name FROM Murder LEFT JOIN Room on Room.RoomId = Murder.RoomId GROUP BY Room.RoomId HAVING COUNT(Room.RoomId)>1;

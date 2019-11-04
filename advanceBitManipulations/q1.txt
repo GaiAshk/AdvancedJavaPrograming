@@ -1,0 +1,31 @@
+/*
+# Bits and Bytes
+
+. 0.01
+Explanation: 1/4 in binary is 0.01
+
+1. -2
+Explanation: 0xff is 11111111 in binary, which is -1 in integer type. and -1*2 is -2.
+
+2. 0x2
+Explanation: b is a byte then when we enter 260 to byte we have an overflow, so b = 260-256 = 4.
+             then we add 0xFE = 254, we get 258 which is again an overflow so b = 258-256 = 2.
+             which is in hex still 2, 0x2.
+
+3. 0x55a6
+Explanation: c is a char which has 16-bits, so c = 0x55aa, which is in binary 0b0101010110101010.
+             then we xor it  with 0b0000000000001100, and we get 0b0101010110100110, which is 0x55a6 in hex.
+
+4. 0b‭00011111100000000000000000000000‬
+Explanation: 1 shifted left 31 times is 1 in the MSB, then when we shift it right we get 6 times 1 in the MSB.
+             after that we do a unsigned shift, which adds 0 to the MSB, so we get 3 times 0 after that 6 times 1, and after that all 0's.
+
+5. 054
+Explanation: e1 is the binary value of -0b0101 which is 0b11111011, then we do a bitwizeAnd with 0b00001111.
+             which is 0b00001011, then we shift it right and we get 0b00101100, which is 054 in octal
+
+6. 22.0 in base 5
+Explanation: first we calculate 6e-1 * 20, 6e-1 is 6/10 times it 20 and we get 12 in decimal, which is still the same in the binary value
+             because the flout is 32 bits, we don't have any problems in the conversion, converting to base 5 we get 22.
+*/
+

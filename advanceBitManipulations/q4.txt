@@ -1,0 +1,31 @@
+# HTML Part (a)
+<html>
+	<head><title>Lorem Ipsum</title></head>
+	<body>
+        <h1> Lorem Ipsum </h1>
+        <form method="get" action="/test">
+      	    dolor sit: <select name='amet'>
+      	        <option value="1">consectetur</option>
+      	        <option value="2">adipiscing</option>
+      	        <option value="3">elit</option>
+      	    </select>
+
+      	    <table border="1">
+                <tr>
+          	        <td> <input name="sed" type="checkbox" value="do">eiusmod</td>
+          		    <td><input type="submit" value="tempor"></td>
+        	    </tr>
+        	    <tr>
+        		    <td><input name="incididunt" type="text" value="ut labore">et dolore</td>
+         		    <td><input type="button" value="nulla"></td>
+        	    </tr>
+      	    </table>
+        </form>
+     </body>
+</html>
+
+
+# HTML Part (b)
+
+html, body, form, table, tr, td, input
+

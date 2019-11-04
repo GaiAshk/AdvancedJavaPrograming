@@ -1,0 +1,125 @@
+# Programming: Part (a)
+
+public static boolean[][] unpackFile(InputStream in) throws IOException {
+        //initialize arrayList
+        ArrayList<boolean[]> arrList = new ArrayList<>();
+
+        // an integer to read byte by byte
+        int c;
+
+        //read first line from the InputStream in
+        c = in.read();
+
+        //if there is not text in the inputStream, I will return an empty array.
+        if(c == -1){
+            boolean[][] empty = new boolean[0][0];
+            return empty;
+        }
+
+        //run in a loop of all the input
+        while(c != -1){
+            //make a new array that will enter the arrayList
+            boolean[] arr = new boolean[64];
+
+            //run on the 64 bits of the inputString
+            for (int i = 0; i < 8; i++) {
+                // enter to the array, arr, 8 bits as boolean representation, from last position, 63 to 0.
+                arr[63-(8*i)]   =  ((c&0b10000000) == 0)? false:true;
+                arr[63-(8*i)-1] =  ((c&0b01000000) == 0)? false:true;
+                arr[63-(8*i)-2] =  ((c&0b00100000) == 0)? false:true;
+                arr[63-(8*i)-3] =  ((c&0b00010000) == 0)? false:true;
+                arr[63-(8*i)-4] =  ((c&0b00001000) == 0)? false:true;
+                arr[63-(8*i)-5] =  ((c&0b00000100) == 0)? false:true;
+                arr[63-(8*i)-6] =  ((c&0b00000010) == 0)? false:true;
+                arr[63-(8*i)-7] =  ((c&0b00000001) == 0)? false:true;
+
+                //read the next byte, because the length is divisible by 8, no end of line here
+                c = in.read();
+            }
+
+            //enter the array of bits to the arrayList
+            arrList.add(arr);
+        }
+
+        //make a new boolean[][] and copy the arrayList to the new array
+
+        //I am using ArrayList.toArray, if it will not work I will just change it manually as in the loop below
+        boolean[][] array = new boolean[arrList.size()][64];
+        array = arrList.toArray();
+
+        /*
+        for (int i = 0; i < arrList.size(); i++) {
+            for (int j = 0; j < 64; j++) {
+                array[i][j] = arrList.get(i)[j];
+            }
+        }
+        */
+
+        //return the final boolean[][]
+        return array;
+    }
+
+
+
+}
+
+# Programming: Part (b)
+
+public static int countIslands(boolean[][] map) {
+        //the number of islands
+        int count = 0;
+        //a Queue to enter islands that can be reached from one to the other
+        LinkedList queue = new LinkedList<Loc>();
+
+        //run on all the map
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                //create a new object Loc, the location in the matrix
+                Loc v = new Loc(i, j);
+
+                //if we are on an island
+                if(v.isLand(map)){
+                    //the number of islands is increased, add one to counter
+                    count++;
+
+                    //push the v to the beginning of the queue
+                    queue.push(v);
+
+                    //while the queue is not empty do the following loop
+                    while(queue.size() > 0){
+                        v = (Loc) queue.pop();
+                        int x = v.x;
+                        int y = v.y;
+
+                        //make a new object to each location that is 1 step away from the island v
+                        Loc vRight = new Loc(x+1, y);
+                        Loc vLeft = new Loc(x-1, y);
+                        Loc vUp = new Loc(x, y+1);
+                        Loc vDown = new Loc(x, y-1);
+
+                        //if any one of them is an island, add him to the queue
+                        if(vRight.isLand(map)){
+                            queue.add(vRight);
+                        }
+                        if(vLeft.isLand(map)){
+                            queue.add(vLeft);
+                        }
+                        if(vUp.isLand(map)){
+                            queue.add(vUp);
+                        }
+                        if(vDown.isLand(map)){
+                            queue.add(vDown);
+                        }
+
+                        //turn the place of this new isLand to false in the map
+                        map[x][y] = false;
+
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+
+
